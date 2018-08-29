@@ -5,7 +5,7 @@
 - __Intro__: This project is designed as reference material for the CodeDoor Meetup named `CodeFest: APIs and Charts`
 - __Aim__: To build an `Application` that takes `Data` from an `API` and displays it in a `Chart` or two.
 - __Coding Rules__: There are none. Use whatever IDE, API, Chart Engine, Code Style you prefer.
-- __Destiny__: Make it as `elegant` and `beautiful` as possible while keeping it `funtional`.
+- __Destiny__: Make it as `elegant` and `beautiful` as possible while keeping it `functional`.
 - __Questions__: `Ask us!` We are here to help so that you get the most out of the experience.
 - __Improvements__: Always welcome 👉 `Push` it!
 - __Contribute__: So everyone can `benefit`!
@@ -74,13 +74,13 @@ $ yarn run lint
 5. [Commit](https://code.visualstudio.com/docs/editor/versioncontrol#_commit) your changes: `$ git commit -m "New: Project Setup"`
 6. [Push]() your branch: `$ git push origin master`
 
-## 🚀 Deployment using Surge
+## 🚀 Deploy using Surge
 
 https://surge.sh/
 
 ```bash
 # Install Surge
-$ npm install --global surge
+$ yarn global add surge
 
 ## Deploy Application
 $ surge
