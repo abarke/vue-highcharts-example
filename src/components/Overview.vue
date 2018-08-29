@@ -19,7 +19,7 @@
         
         <span>{{ currency.description }} ({{currency.code}}):</span>
         
-        <span class="highlight">
+        <span class="highlight right">
           <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
         </span>
 
