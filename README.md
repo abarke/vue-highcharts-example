@@ -70,7 +70,7 @@ $ yarn run lint
 1. [Create an Account](https://github.com/)
 2. [Create an New Repository](https://github.com/new) `your-project-name`
 3. [Create SSH Keys]((https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)): `$ ssh-keygen -t rsa -b 4096 -C "your.email@example.com"`
-4. [Upload SSH Keys](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) to [GitHub](https://github.com/settings/keys) (copy public key to clipboard): `$ clip < ~/.ssh/id_rsa.pub`
+4. [Upload SSH Keys](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) to [GitHub](https://github.com/settings/keys). Copy public key to clipboard with: `$ clip < ~/.ssh/id_rsa.pub`
 5. [Commit](https://code.visualstudio.com/docs/editor/versioncontrol#_commit) your changes: `$ git commit -m "New: Project Setup"`
 6. [Push]() your branch: `$ git push origin master`
 
@@ -103,7 +103,7 @@ $ git checkout -b my-new-feature-branch
 $ git commit -am "New: Exciting Feature"
 
 # Push commit to remote repository
-$ git push
+$ git push origin my-new-feature-branch
 ```
 
 Once happy with your submission [create a pull request](https://help.github.com/articles/creating-a-pull-request/) for the changes to be submitted for review. 
