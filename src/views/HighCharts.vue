@@ -61,9 +61,9 @@ export default {
         labels: this.labels,
         datasets: [
           {
-            label: 'Bitcoin (BTC)',
+            label: 'Bitcoin (BTC/USD)',
             backgroundColor: '#f7931a',
-					  borderColor: '#f7931a',
+            borderColor: '#f7931a',
             fill: false,
             data: null
           }

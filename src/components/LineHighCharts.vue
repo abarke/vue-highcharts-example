@@ -2,7 +2,6 @@
   <div class="highlight">{ HighCharts Component }</div>
 </template>
 
-
 <script>
 
 // HighCharts
