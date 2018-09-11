@@ -34,23 +34,30 @@ export default {
   },
   
   methods: {
+    /**
+     * Get data method uses axios to get data via a HTTP API Endpoint
+     */
     getData() {
       axios
-      .get('https://api.coindesk.com/v1/bpi/historical/close.json')
+      .get('https://api.coindesk.com/v1/bpi/historical/close.json') // HTTP GET Request
       .then(response => {
         this.chartData.labels = _.keys(response.data.bpi);
         this.chartData.datasets[0].data = _.values(response.data.bpi);
         this.updated = response.data.time.updated;
         this.disclaimer = response.data.disclaimer;
       })
-      .catch(error => {
+      .catch(error => { // Executes if an error occurs if code is not >= 200 && < 300
         this.hickup = true,
         this.error = error
       })
-      .finally(() => this.loading = false)
+      .finally(() => this.loading = false) // Always occurs even if there is an error
     }
   },
 
+  /**
+   * The data object for the Vue instance.
+   * Must declare all root-level reactive properties upfront to be reactive.
+   */
   data() {
     return {
       loading: true,
@@ -58,7 +65,6 @@ export default {
       hickup: false,
       error: null,
       chartData: {
-        labels: this.labels,
         datasets: [
           {
             label: 'Bitcoin (BTC/USD)',
@@ -86,6 +92,9 @@ export default {
     }
   },
 
+  /**
+   * Called after the instance has been mounted
+   */
   mounted() {
     this.getData();
   }
