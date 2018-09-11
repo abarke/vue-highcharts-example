@@ -6,7 +6,7 @@
       <p>Loading...</p>
     </div>
     
-    <div class="error animated bounceInRight" v-else-if="hickup">
+    <div class="error animated bounceInRight" v-else-if="showError">
       <p>Error accessing the API: {{ error.message }}</p>
       <p v-if="error.response">Response: {{ error.response }}</p>
     </div>
@@ -21,10 +21,10 @@
 
 <script>
 // @ is an alias to /src
-import {Chart} from 'highcharts-vue'
 import axios from 'axios'
 import _ from 'lodash'
 import * as moment from 'moment'
+import {Chart} from 'highcharts-vue'
 import Highcharts from 'highcharts'
 import stockInit from 'highcharts/modules/stock'
 
@@ -56,7 +56,7 @@ export default {
         this.disclaimer = response.data.disclaimer
       })
       .catch(error => { // Executes if an error occurs if code is not >= 200 && < 300
-        this.hickup = true,
+        this.showError = true,
         this.error = error
       })
       .finally(() => this.loading = false) // Always occurs even if there is an error
@@ -77,7 +77,7 @@ export default {
     return {
       loading: true,
       updated: null,
-      hickup: false,
+      showError: false,
       error: null,
       chartOptions: {
         title: {
@@ -97,8 +97,7 @@ export default {
         },
         rangeSelector: {
             enabled: false
-        },
-        
+        }
       }
     }
   },
