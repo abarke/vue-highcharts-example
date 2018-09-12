@@ -10,7 +10,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
+    "highcharts": "^6.1.2",
+    "highcharts-vue": "^1.2.0",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
     "vue": "^2.5.17",
     "vue-chartjs": "^3.4.0",
     "vue-router": "^3.0.1"

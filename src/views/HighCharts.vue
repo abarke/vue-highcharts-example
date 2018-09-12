@@ -6,13 +6,13 @@
       <p>Loading...</p>
     </div>
     
-    <div class="error animated bounceInRight" v-else-if="hickup">
+    <div class="error animated bounceInRight" v-else-if="showError">
       <p>Error accessing the API: {{ error.message }}</p>
       <p v-if="error.response">Response: {{ error.response }}</p>
     </div>
     
     <div class="animated bounceInRight" v-else>
-      <LineHighCharts :data="chartData" :options="chartOptions"/>
+      <highcharts :constructor-type="'stockChart'" :options="chartOptions"/>
       <p class="updated">Updated: {{ updated }}</p>
       <p class="box disclaimer">{{ disclaimer }}</p>
     </div>
@@ -21,67 +21,92 @@
 
 <script>
 // @ is an alias to /src
-import LineHighCharts from '@/components/LineHighCharts.vue'
 import axios from 'axios'
 import _ from 'lodash'
+import * as moment from 'moment'
+import {Chart} from 'highcharts-vue'
+import Highcharts from 'highcharts'
+import stockInit from 'highcharts/modules/stock'
+
+stockInit(Highcharts)
 
 export default {
-  
   name: 'HighChartLineChart',
-  
+
   components: {
-    LineHighCharts
+    'highcharts': Chart
   },
-  
+
   methods: {
+    /**
+     * Get data method uses axios to get data via a HTTP API Endpoint
+     */
     getData() {
       axios
-      .get('https://api.coindesk.com/v1/bpi/historical/close.json')
+      .get('https://api.coindesk.com/v1/bpi/historical/close.json') // HTTP GET Request
       .then(response => {
-        this.chartData.labels = _.keys(response.data.bpi);
-        this.chartData.datasets[0].data = _.values(response.data.bpi);
-        this.updated = response.data.time.updated;
-        this.disclaimer = response.data.disclaimer;
+        
+        // Parse the respose data into a format that highcharts understands
+        this.chartOptions.series[0].data = this.parseData(response.data.bpi)
+
+        // Assign the last updated time
+        this.updated = response.data.time.updated
+        
+        // Assign the disclaimer text
+        this.disclaimer = response.data.disclaimer
       })
-      .catch(error => {
-        this.hickup = true,
+      .catch(error => { // Executes if an error occurs if code is not >= 200 && < 300
+        this.showError = true,
         this.error = error
       })
-      .finally(() => this.loading = false)
+      .finally(() => this.loading = false) // Always occurs even if there is an error
+    },
+    /** 
+     * Parse data function
+     */
+    parseData(response) {
+      return _.map(response, (value, key) => [moment(key, "YYYY-MM-DD").valueOf(), value])
     }
   },
 
+  /**
+   * The data object for the Vue instance.
+   * Must declare all root-level reactive properties upfront to be reactive.
+   */
   data() {
     return {
       loading: true,
       updated: null,
-      hickup: false,
+      showError: false,
       error: null,
-      chartData: {
-        labels: this.labels,
-        datasets: [
-          {
-            label: 'Bitcoin (BTC/USD)',
-            backgroundColor: '#f7931a',
-            borderColor: '#f7931a',
-            fill: false,
-            data: null
-          }
-        ]
-      },
       chartOptions: {
-        responsive: true, 
-        maintainAspectRatio: false,
-        tooltips: {
-          enabled: true
+        title: {
+          text: ''
+        },
+        series: [{
+          name: 'Bitcoin (BTC/USD)',
+          type: 'line',
+          color: '#f7931a',
+          data: null
+        }],
+        navigator: {
+            enabled: false
+        },
+        scrollbar: {
+            enabled: false
+        },
+        rangeSelector: {
+            enabled: false
         }
-      },
+      }
     }
   },
 
+  /**
+   * Called after the instance has been mounted
+   */
   mounted() {
     this.getData();
   }
-
 }
 </script>
