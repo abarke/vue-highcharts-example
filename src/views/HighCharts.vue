@@ -12,7 +12,7 @@
     </div>
     
     <div class="animated bounceInRight" v-else>
-      <highcharts :constructor-type="'stockChart'" :options="chartOptions"/>
+        <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>
       <p class="updated">Updated: {{ updated }}</p>
       <p class="box disclaimer">{{ disclaimer }}</p>
     </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
 import axios from 'axios'
 import _ from 'lodash'
 import * as moment from 'moment'
@@ -37,9 +37,9 @@ export default {
       axios
       .get('https://api.coindesk.com/v1/bpi/historical/close.json') // HTTP GET Request
       .then(response => {
-        
+
         // Parse the response data into a format that highcharts understands
-        this.chartOptions.series[0].data = this.parseData(response.data.bpi);
+        this.chartOptions.series[0].data = this.parseData(response.data['bpi']);
 
         // Assign the last updated time
         this.updated = response.data.time.updated;

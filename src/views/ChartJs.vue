@@ -20,8 +20,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import LineChartJs from '@/components/LineChartJs.vue'
+
+import LineChartJs from '../components/LineChartJs.vue'
 import axios from 'axios'
 import _ from 'lodash'
 
@@ -41,8 +41,8 @@ export default {
       axios
       .get('https://api.coindesk.com/v1/bpi/historical/close.json') // HTTP GET Request
       .then(response => {
-        this.chartData.labels = _.keys(response.data.bpi);
-        this.chartData.datasets[0].data = _.values(response.data.bpi);
+        this.chartData.labels = _.keys(response.data['bpi']);
+        this.chartData.datasets[0].data = _.values(response.data['bpi']);
         this.updated = response.data.time.updated;
         this.disclaimer = response.data.disclaimer;
       })
