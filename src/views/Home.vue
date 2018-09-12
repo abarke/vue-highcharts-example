@@ -5,8 +5,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import Overview from '@/components/Overview.vue'
+
+import Overview from '../components/Overview.vue'
 
 export default {
   name: 'home',
