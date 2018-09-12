@@ -28,7 +28,7 @@ import {Chart} from 'highcharts-vue'
 import Highcharts from 'highcharts'
 import stockInit from 'highcharts/modules/stock'
 
-stockInit(Highcharts)
+stockInit(Highcharts);
 
 export default {
   name: 'HighChartLineChart',
@@ -46,17 +46,17 @@ export default {
       .get('https://api.coindesk.com/v1/bpi/historical/close.json') // HTTP GET Request
       .then(response => {
         
-        // Parse the respose data into a format that highcharts understands
-        this.chartOptions.series[0].data = this.parseData(response.data.bpi)
+        // Parse the response data into a format that highcharts understands
+        this.chartOptions.series[0].data = this.parseData(response.data.bpi);
 
         // Assign the last updated time
-        this.updated = response.data.time.updated
+        this.updated = response.data.time.updated;
         
         // Assign the disclaimer text
         this.disclaimer = response.data.disclaimer
       })
       .catch(error => { // Executes if an error occurs if code is not >= 200 && < 300
-        this.showError = true,
+        this.showError = true;
         this.error = error
       })
       .finally(() => this.loading = false) // Always occurs even if there is an error

@@ -51,10 +51,10 @@ export default {
       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .then(response => {
         this.currencies = response.data.bpi;
-        this.updated = response.data.time.updated
+        this.updated = response.data.time.updated;
       })
       .catch(error => {
-        this.hickup = true,
+        this.hickup = true;
         this.error = error
       })
       .finally(() => this.loading = false)

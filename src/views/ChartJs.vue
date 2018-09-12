@@ -47,7 +47,7 @@ export default {
         this.disclaimer = response.data.disclaimer;
       })
       .catch(error => { // Executes if an error occurs if code is not >= 200 && < 300
-        this.showError = true,
+        this.showError = true;
         this.error = error
       })
       .finally(() => this.loading = false) // Always occurs even if there is an error
@@ -98,6 +98,5 @@ export default {
   mounted() {
     this.getData();
   }
-
 }
 </script>
