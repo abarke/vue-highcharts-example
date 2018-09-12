@@ -24,18 +24,10 @@
 import axios from 'axios'
 import _ from 'lodash'
 import * as moment from 'moment'
-import {Chart} from 'highcharts-vue'
-import Highcharts from 'highcharts'
-import stockInit from 'highcharts/modules/stock'
-
-stockInit(Highcharts);
 
 export default {
-  name: 'HighChartLineChart',
 
-  components: {
-    'highcharts': Chart
-  },
+  name: 'HighChartLineChart',
 
   methods: {
     /**
