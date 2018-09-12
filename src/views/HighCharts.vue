@@ -12,7 +12,7 @@
     </div>
     
     <div class="animated bounceInRight" v-else>
-      <highcharts :constructor-type="'stockChart'" :options="chartOptions"/>
+        <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>
       <p class="updated">Updated: {{ updated }}</p>
       <p class="box disclaimer">{{ disclaimer }}</p>
     </div>
@@ -20,22 +20,14 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
 import axios from 'axios'
 import _ from 'lodash'
 import * as moment from 'moment'
-import {Chart} from 'highcharts-vue'
-import Highcharts from 'highcharts'
-import stockInit from 'highcharts/modules/stock'
-
-stockInit(Highcharts)
 
 export default {
-  name: 'HighChartLineChart',
 
-  components: {
-    'highcharts': Chart
-  },
+  name: 'HighChartLineChart',
 
   methods: {
     /**
@@ -45,18 +37,18 @@ export default {
       axios
       .get('https://api.coindesk.com/v1/bpi/historical/close.json') // HTTP GET Request
       .then(response => {
-        
-        // Parse the respose data into a format that highcharts understands
-        this.chartOptions.series[0].data = this.parseData(response.data.bpi)
+
+        // Parse the response data into a format that highcharts understands
+        this.chartOptions.series[0].data = this.parseData(response.data['bpi']);
 
         // Assign the last updated time
-        this.updated = response.data.time.updated
+        this.updated = response.data.time.updated;
         
         // Assign the disclaimer text
         this.disclaimer = response.data.disclaimer
       })
       .catch(error => { // Executes if an error occurs if code is not >= 200 && < 300
-        this.showError = true,
+        this.showError = true;
         this.error = error
       })
       .finally(() => this.loading = false) // Always occurs even if there is an error
