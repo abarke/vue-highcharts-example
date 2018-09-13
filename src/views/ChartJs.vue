@@ -7,12 +7,16 @@
     </div>
 
     <div class="error animated bounceInRight" v-else-if="showError">
+      <p class="big">🙁</p>
       <p>Error accessing the API: {{ error.message }}</p>
       <p v-if="error.response">Response: {{ error.response }}</p>
     </div>
 
     <div class="animated bounceInRight" v-else>
+
+      <!-- Vue Component -->
       <LineChartJs :data="chartData" :options="chartOptions"/>
+
       <p class="updated">Updated: {{ updated }}</p>
       <p class="box disclaimer">{{ disclaimer }}</p>
     </div>
