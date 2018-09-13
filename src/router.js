@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/chartjs',
@@ -17,16 +17,16 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (chart.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "chart" */ './views/ChartJs.vue')
+      component: () => import(/* webpackChunkName: "chart" */ './views/ChartJs.vue'),
     },
-    
+
     {
       path: '/highcharts',
       name: 'highcharts',
       // route level code-splitting
       // this generates a separate chunk (chart.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "chart" */ './views/HighCharts.vue')
-    }
-  ]
-})
+      component: () => import(/* webpackChunkName: "chart" */ './views/HighCharts.vue'),
+    },
+  ],
+});

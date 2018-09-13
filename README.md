@@ -57,6 +57,10 @@ $ yarn lint
 - [C3.js](https://c3js.org/)
 - [Made with Vue.js](https://madewithvuejs.com/charts)
 
+## 👁 Useful Resources
+
+- [ES2015+ Cheat Sheet](https://devhints.io/es6)
+
 ## 💡 Ideas
 
 - Reactive Live Updating Chart
