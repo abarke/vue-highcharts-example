@@ -5,13 +5,12 @@
 </template>
 
 <script>
+  import Overview from '../components/Overview.vue';
 
-import Overview from '../components/Overview.vue'
-
-export default {
-  name: 'home',
-  components: {
-    Overview
-  }
-}
+  export default {
+    name: 'home',
+    components: {
+      Overview,
+    },
+  };
 </script>
