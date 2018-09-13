@@ -22,6 +22,7 @@
 <script>
   import LineChartJs from '../components/LineChartJs.vue';
   import axios from 'axios';
+  import _ from 'lodash';
 
   export default {
     name: 'ChartJsLineChart',
