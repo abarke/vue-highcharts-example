@@ -1,4 +1,3 @@
-<!--suppress ALL -->
 <template>
   <div id="overview">
 
@@ -9,6 +8,7 @@
     </div>
 
     <div class="box error" v-else-if="showError">
+      <p class="big">🙁</p>
       <p>Error accessing the API: {{ error.message }}</p>
       <p v-if="error.response">Response: {{ error.response }}</p>
     </div>
@@ -20,7 +20,7 @@
         <span>{{ currency.description }} ({{ currency.code }}):</span>
 
         <span class="highlight right">
-          <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
+          <span v-html="currency.symbol"></span>{{ currency['rate_float'] | currencydecimal }}
         </span>
       </div>
     </div>

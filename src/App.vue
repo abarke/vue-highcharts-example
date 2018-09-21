@@ -65,6 +65,7 @@
   }
 
   .updated {
+    font-size: medium;
     line-height: 2em;
     color: #35495e;
   }
@@ -77,5 +78,9 @@
 
   .error {
     color: red;
+  }
+
+  .big {
+    font-size: xx-large;
   }
 </style>
