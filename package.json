@@ -11,7 +11,7 @@
     "axios": "^0.18.1",
     "chart.js": "^2.7.2",
     "core-js": "^3.6.5",
-    "highcharts": "^6.1.2",
+    "highcharts": "^8.1.2",
     "highcharts-vue": "^1.2.0",
     "lodash": "^4.17.19",
     "moment": "^2.22.2",
