@@ -2,7 +2,7 @@
 
 ## 📑 Description
 
-- __Intro__: This project is designed as reference material for the CodeDoor Meetup named `CodeFest: APIs and Charts`
+- __Intro__: This project is designed as reference material for FactSet/CodeDoor training sessions.
 - __Aim__: To build an `Application` that takes `Data` from an `API` and displays it in a `Chart` or two.
 - __Coding Rules__: There are none. Use whatever IDE, API, Chart Engine, Code Style you prefer.
 - __Destiny__: Make it as `elegant` and `beautiful` as possible while keeping it `functional`.
